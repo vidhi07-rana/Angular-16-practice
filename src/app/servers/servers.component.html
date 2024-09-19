@@ -1,0 +1,26 @@
+<label for="serverName">Server Name</label>
+ <!-- <input type="text"  (input)="onCreateName($event)"/> -->
+ <input type="text"  [(ngModel)]="serverName"/>
+
+
+<!-- $event-eventBinding  -->
+<button class="btn btn-primary" 
+[disabled]="allowServer" (click)="addName()" (click)="onCreateServer()" >Add Server</button>
+<!-- <p>{{serverName}}</p>  -->
+
+<!-- <p>{{allowServer}}</p> -->
+ <br>
+ <br>
+
+<p *ngIf="severCreate; else noserver">{{serverCreateStatus}}</p>
+<ng-template #noserver>
+    <p >No server was created </p>
+</ng-template>
+<!-- <p *ngIf="!severCreate">no server was created</p> -->
+
+<label  >UserName</label>
+<input type="text" [(ngModel)]="username">
+<p>{{username}}</p>
+<button class="btn btn-primary"  [disabled]="username === ''" (click)="username=''">Reset UserName</button>
+
+<app-server *ngFor="let server of servers"></app-server>
